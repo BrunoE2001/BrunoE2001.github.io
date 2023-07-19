@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulario con descarga de PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .formulario-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .pdf-button {
+            display: block;
+            width: 200px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .pdf-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function mostrarFormulario(opcion) {
+            if (opcion === "hombre") {
+                document.getElementById("formularioHombre").style.display = "block";
+                document.getElementById("formularioMujer").style.display = "none";
+            } else if (opcion === "mujer") {
+                document.getElementById("formularioHombre").style.display = "none";
+                document.getElementById("formularioMujer").style.display = "block";
+            }
+        }
+
+        function descargarPDF(opcion) {
+            if (opcion === "opcionH1") {
+                window.location.href = "PP HOMBRES.pdf";
+            } else if (opcion === "opcionH2") {
+                window.location.href =
+                    "AM HOMBRES.pdf";
+            } else if (opcion === "opcionM1") {
+                window.location.href =
+                    "PP MUJERES.pdf";
+            } else if (opcion === "opcionM2") {
+                window.location.href =
+                    "AM MUJERES.pdf";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Formulario con descarga de PDF</h1>
+    <form>
+        <label for="genero">¿Eres hombre o mujer?</label>
+        <select id="genero" onchange="mostrarFormulario(this.value)">
+            <option value="">Selecciona una opción</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+        </select>
+    </form>
+
+    <div id="formularioHombre" class="formulario-container" style="display: none">
+        <h2>Formulario para hombres</h2>
+        <form>
+            <!-- Agrega aquí las preguntas y opciones específicas para hombres -->
+            <label for="opcionH1">Perdida de Peso</label>
+            <input type="button" class="pdf-button" value="Descargar PDF 1" onclick="descargarPDF('opcionH1')" />
+
+            <br />
+
+            <label for="opcionH2">Ganancia Muscular</label>
+            <input type="button" class="pdf-button" value="Descargar PDF 2" onclick="descargarPDF('opcionH2')" />
+        </form>
+    </div>
+
+    <div id="formularioMujer" class="formulario-container" style="display: none">
+        <h2>Formulario para mujeres</h2>
+        <form>
+            <!-- Agrega aquí las preguntas y opciones específicas para mujeres -->
+            <label for="opcionM1">Perdida de Peso</label>
+            <input type="button" class="pdf-button" value="Descargar PDF 1" onclick="descargarPDF('opcionM1')" />
+
+            <br />
+
+            <label for="opcionM2">Ganancia Muscular</label>
+            <input type="button" class="pdf-button" value="Descargar PDF 2" onclick="descargarPDF('opcionM2')" />
+        </form>
+    </div>
+</body>
+
+</html>
