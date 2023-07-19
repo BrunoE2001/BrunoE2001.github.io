@@ -21,14 +21,13 @@
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 20px;
+            margin-bottom: 5px;
         }
 
         select {
             width: 100%;
-            padding: 15px;
-            font-size: 20px;
+            padding: 10px;
+            font-size: 16px;
         }
 
         .formulario-container {
@@ -44,10 +43,10 @@
 
         .pdf-button {
             display: block;
-            width: 100px;
+            width: 200px;
             margin-top: 10px;
-            padding: 15px;
-            font-size: 20px;
+            padding: 10px;
+            font-size: 16px;
             text-align: center;
             background-color: #4caf50;
             color: #fff;
@@ -58,6 +57,7 @@
         .pdf-button:hover {
             background-color: #45a049;
         }
+
         /* Estilos responsivos para dispositivos móviles */
         @media (max-width: 768px) {
             h1 {
@@ -87,18 +87,72 @@
             }
         }
 
-        function descargarPDF(opcion) {
-            if (opcion === "opcionH1") {
-                window.location.href = "PP HOMBRES.pdf";
-            } else if (opcion === "opcionH2") {
-                window.location.href =
-                    "AM HOMBRES.pdf";
-            } else if (opcion === "opcionM1") {
-                window.location.href =
-                    "PP MUJERES.pdf";
-            } else if (opcion === "opcionM2") {
-                window.location.href =
-                    "AM MUJERES.pdf";
+        function descargarPDFHombres() {
+            var objetivo = document.getElementById("objetivo").value;
+            var experiencia = document.getElementById("experiencia").value;
+
+            if (objetivo === "bajar_grasa") {
+                if (experiencia === "principiante") {
+                    window.location.href = "PP HOMBRES.pdf";
+                } else if (experiencia === "intermedio") {
+                    window.location.href = "PP HOMBRES.pdf";
+                } else if (experiencia === "avanzado") {
+                    window.location.href = "PP HOMBRES.pdf";
+                }
+            } else if (objetivo === "aumentar_muscular") {
+                if (experiencia === "principiante") {
+                    window.location.href = "AM HOMBRES.pdf";
+                } else if (experiencia === "intermedio") {
+                    window.location.href = "AM HOMBRES.pdf";
+                } else if (experiencia === "avanzado") {
+                    window.location.href = "AM HOMBRES.pdf";
+                }
+            }
+        }
+
+        function descargarPDFMujeres() {
+            var objetivoMujer = document.getElementById("objetivoMujer").value;
+            var experienciaMujer = document.getElementById("experienciaMujer").value;
+
+            if (objetivoMujer === "bajar_grasa") {
+                if (experienciaMujer === "principiante") {
+                    window.location.href = "PP MUJERES.pdf";
+                } else if (experienciaMujer === "intermedio") {
+                    window.location.href = "PP MUJERES.pdf";
+                } else if (experienciaMujer === "avanzado") {
+                    window.location.href = "PP MUJERES.pdf";
+                }
+            } else if (objetivoMujer === "aumentar_muscular") {
+                if (experienciaMujer === "principiante") {
+                    window.location.href = "AM MUJERES.pdf";
+                } else if (experienciaMujer === "intermedio") {
+                    window.location.href = "AM MUJERES.pdf";
+                } else if (experienciaMujer === "avanzado") {
+                    window.location.href = "AM MUJERES.pdf";
+                }
+            }
+        }
+
+        function mostrarExperiencia(opcion) {
+            var experienciaContainer = document.getElementById("experienciaContainer");
+            var experiencia = document.getElementById("experiencia");
+            var experienciaContainerMujer = document.getElementById("experienciaContainerMujer");
+            var experienciaMujer = document.getElementById("experienciaMujer");
+
+            if (opcion !== "") {
+                experienciaContainer.style.display = "block";
+                experienciaContainerMujer.style.display = "block";
+
+                if (opcion === "hombre") {
+                    experiencia.style.display = "block";
+                    experienciaMujer.style.display = "none";
+                } else if (opcion === "mujer") {
+                    experiencia.style.display = "none";
+                    experienciaMujer.style.display = "block";
+                }
+            } else {
+                experienciaContainer.style.display = "none";
+                experienciaContainerMujer.style.display = "none";
             }
         }
     </script>
@@ -115,33 +169,79 @@
         </select>
     </form>
 
-    <div id="formularioHombre" class="formulario-container" style="display: none">
+    <div id="formularioHombre" class="formulario-container" style="display: none;">
         <h2>Formulario para hombres</h2>
         <form>
-            <!-- Agrega aquí las preguntas y opciones específicas para hombres -->
-            <label for="opcionH1">Perdida de Peso</label>
-            <input type="button" class="pdf-button" value="Descargar PDF 1" onclick="descargarPDF('opcionH1')" />
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
 
-            <br />
+            <br>
 
-            <label for="opcionH2">Ganancia Muscular</label>
-            <input type="button" class="pdf-button" value="Descargar PDF 2" onclick="descargarPDF('opcionH2')" />
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" required>
+
+            <br>
+
+            <label for="objetivo">Objetivo principal:</label>
+            <select id="objetivo" onchange="mostrarExperiencia(this.value)">
+                <option value="">Selecciona una opción</option>
+                <option value="bajar_grasa">Bajar tu porcentaje de grasa corporal</option>
+                <option value="aumentar_muscular">Aumentar tu masa muscular</option>
+            </select>
+
+            <div id="experienciaContainer" style="display: none;">
+                <label for="experiencia">Experiencia en entrenamiento de fuerza:</label>
+                <select id="experiencia">
+                    <option value="">Selecciona una opción</option>
+                    <option value="principiante">Principiante (6 meses o menos entrenando)</option>
+                    <option value="intermedio">Intermedio (de 6 meses a 1 año entrenando)</option>
+                    <option value="avanzado">Avanzado (más de 1 año entrenando)</option>
+                </select>
+            </div>
+
+            <br>
+
+            <input type="button" class="pdf-button" value="Descargar PDF" onclick="descargarPDFHombres()">
         </form>
     </div>
 
-    <div id="formularioMujer" class="formulario-container" style="display: none">
+
+    <div id="formularioMujer" class="formulario-container" style="display: none;">
         <h2>Formulario para mujeres</h2>
         <form>
-            <!-- Agrega aquí las preguntas y opciones específicas para mujeres -->
-            <label for="opcionM1">Perdida de Peso</label>
-            <input type="button" class="pdf-button" value="Descargar PDF 1" onclick="descargarPDF('opcionM1')" />
+            <label for="nombreMujer">Nombre:</label>
+            <input type="text" id="nombreMujer" required>
 
-            <br />
+            <br>
 
-            <label for="opcionM2">Ganancia Muscular</label>
-            <input type="button" class="pdf-button" value="Descargar PDF 2" onclick="descargarPDF('opcionM2')" />
+            <label for="edadMujer">Edad:</label>
+            <input type="number" id="edadMujer" required>
+
+            <br>
+
+            <label for="objetivoMujer">Objetivo principal:</label>
+            <select id="objetivoMujer" onchange="mostrarExperiencia(this.value)">
+                <option value="">Selecciona una opción</option>
+                <option value="bajar_grasa">Bajar tu porcentaje de grasa corporal</option>
+                <option value="aumentar_muscular">Aumentar tu masa muscular</option>
+            </select>
+
+            <div id="experienciaContainerMujer" style="display: none;">
+                <label for="experienciaMujer">Experiencia en entrenamiento de fuerza:</label>
+                <select id="experienciaMujer">
+                    <option value="">Selecciona una opción</option>
+                    <option value="principiante">Principiante (6 meses o menos entrenando)</option>
+                    <option value="intermedio">Intermedio (de 6 meses a 1 año entrenando)</option>
+                    <option value="avanzado">Avanzado (más de 1 año entrenando)</option>
+                </select>
+            </div>
+
+            <br>
+
+            <input type="button" class="pdf-button" value="Descargar PDF" onclick="descargarPDFMujeres()">
         </form>
     </div>
+
 </body>
 
 </html>
