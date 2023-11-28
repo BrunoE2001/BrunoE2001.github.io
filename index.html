@@ -225,87 +225,7 @@
             }
         }
     </style>
-    <script>
-        function mostrarFormulario(opcion) {
-            if (opcion === "hombre") {
-                document.getElementById("formularioHombre").style.display = "block";
-                document.getElementById("formularioMujer").style.display = "none";
-            } else if (opcion === "mujer") {
-                document.getElementById("formularioHombre").style.display = "none";
-                document.getElementById("formularioMujer").style.display = "block";
-            }
-        }
-
-        function descargarPDFHombres() {
-            var objetivo = document.getElementById("objetivo").value;
-            var experiencia = document.getElementById("experiencia").value;
-
-            if (objetivo === "bajar_grasa") {
-                if (experiencia === "principiante") {
-                    window.location.href = "PP HOMBRES_Parte1.pdf";
-                } else if (experiencia === "intermedio") {
-                    window.location.href = "PP HOMBRES_Parte2.pdf";
-                } else if (experiencia === "avanzado") {
-                    window.location.href = "PP HOMBRES_Parte3.pdf";
-                }
-            } else if (objetivo === "aumentar_muscular") {
-                if (experiencia === "principiante") {
-                    window.location.href = "AM HOMBRES_Parte1.pdf";
-                } else if (experiencia === "intermedio") {
-                    window.location.href = "AM HOMBRES_Parte2.pdf";
-                } else if (experiencia === "avanzado") {
-                    window.location.href = "AM HOMBRES_Parte3.pdf";
-                }
-            }
-        }
-
-        function descargarPDFMujeres() {
-            var objetivoMujer = document.getElementById("objetivoMujer").value;
-            var experienciaMujer = document.getElementById("experienciaMujer").value;
-
-            if (objetivoMujer === "bajar_grasa") {
-                if (experienciaMujer === "principiante") {
-                    window.location.href = "PP MUJERES_Parte1.pdf";
-                } else if (experienciaMujer === "intermedio") {
-                    window.location.href = "PP MUJERES_Parte2.pdf";
-                } else if (experienciaMujer === "avanzado") {
-                    window.location.href = "PP MUJERES_Parte3.pdf";
-                }
-            } else if (objetivoMujer === "aumentar_muscular") {
-                if (experienciaMujer === "principiante") {
-                    window.location.href = "AM MUJERES_Parte1.pdf";
-                } else if (experienciaMujer === "intermedio") {
-                    window.location.href = "AM MUJERES_Parte2.pdf";
-                } else if (experienciaMujer === "avanzado") {
-                    window.location.href = "AM MUJERES_Parte3.pdf";
-                }
-            }
-        }
-
-        function mostrarExperiencia(opcion) {
-            var experienciaContainer = document.getElementById("experienciaContainer");
-            var experiencia = document.getElementById("experiencia");
-            var experienciaContainerMujer = document.getElementById("experienciaContainerMujer");
-            var experienciaMujer = document.getElementById("experienciaMujer");
-
-            if (opcion !== "") {
-                experienciaContainer.style.display = "block";
-                experienciaContainerMujer.style.display = "block";
-
-                if (opcion === "hombre") {
-                    experiencia.style.display = "block";
-                    experienciaMujer.style.display = "none";
-                } else if (opcion === "mujer") {
-                    experiencia.style.display = "none";
-                    experienciaMujer.style.display = "block";
-                }
-            } else {
-                experienciaContainer.style.display = "none";
-                experienciaContainerMujer.style.display = "none";
-            }
-        }
-
-    </script>
+    
 </head>
 
 <body>
@@ -422,12 +342,6 @@
 
     </div>
     <!--Header ends-->
-
-    <!--Content starts-->
-    <div class="content flex2">
-        <p>GeoGym |GymSport S.A. De C.V </p>
-    </div>
-    <!--Content ends-->
 </body>
 
 </html>
