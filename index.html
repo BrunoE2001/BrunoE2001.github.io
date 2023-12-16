@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capitan Nemo</title>
+  <link rel="stylesheet" media="all" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+  <svg>
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="name" />
+        <feColorMatrix in="name" mode="matrix" values="1 0 0 0 0
+                                                       0 1 0 0 0
+                                                       0 0 1 0 0
+                                                       0 0 0 15 -10" result="b" />
+
+        <feBlend in="SourceGraphic" in2="b" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div id="animation"></div>
+  <div class="wrapper">
+    <div id="container">
+      <p class="text">BUILDING</p>
+      <div class="drop"></div>
+    </div>
+  </div>
+
+  <!-- LOTTIE FILES -->
+  <script>
+    // Inserta la animación Lottie
+    lottie.loadAnimation({
+      container: document.getElementById('animation'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'building.json'
+    });
+  </script>
+
+</body>
+
+</html>
